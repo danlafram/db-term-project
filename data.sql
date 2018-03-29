@@ -63,6 +63,13 @@ VALUES
 ("2018-03-10", "Jimmy is still very small for his kind and age. Maybe increase the food.", 15, 10),
 ("2018-03-10", "Since his wings are clipped, you'll have to make sure he gets exercise somehow.", 15, 11);
 
+INSERT INTO results(treatment_quantity, start_date, end_date, examNo, animalNo, treatmentNo)
+VALUES
+(3, "2018-03-20", "2018-06-20", 1, 1, "T110"),
+(12, "2018-02-28", "2019-02-28", 3, 3, "T112"),
+(24, "2018-01-09", "2018-03-09", 5, 5, "T112"),
+(8, "2018-02-25", "2018-10-25", 8, 8, "T110"),
+
 
 
 

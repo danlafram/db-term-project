@@ -65,11 +65,11 @@ CREATE TABLE exams(
 CREATE TABLE results(
 	resulsId 			INT SERIAL PRIMARY KEY,
 	treatment_quantity 	INT 	NOT NULL,
-	start_DATE 			DATE 	NOT NULL,
+	start_date			DATE 	NOT NULL,
 	end_date 			DATE 	NOT NULL,
 	examNo 				INT REFERENCES exams(examNo),
 	animalNo 			INT REFERENCES animals(animalNo),
-	treatmentNo 		INT REFERENCES treatments(treatmentNo),
+	treatmentNo 		VARCHAR(5) REFERENCES treatments(treatmentNo),
 );
 
 -- Treatments table is static and will only be read from. NO INSERTIONS.
