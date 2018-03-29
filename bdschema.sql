@@ -76,7 +76,7 @@ CREATE TABLE results(
 CREATE TABLE treatments(
 	treatmentNo 		VARCHAR(5) PRIMARY KEY,
 	name 				VARCHAR(255) 	NOT NULL,
-	price 				INT 			NOT NULL,
+	price 				MONEY 			NOT NULL,
 );
 
 
