@@ -47,9 +47,9 @@ CREATE TABLE animals(
 	type 				VARCHAR(255) 	NOT NULL,
 	description 		TEXT 			NOT NULL, -- TEXT might be big, can be chagned
 	dob 				DATE 			NOT NULL, -- Check documentation
-	DATEInscription 	DATE 			NOT NULL,
-	animaleEtat 		state 			NOT NULL,
-	owner 				INT REFERENCES owners(ownerNum)
+	date_inscription 	DATE 			NOT NULL,
+	animale_sate		state 			NOT NULL,
+	ownerNum 			INT REFERENCES owners(ownerNum)
 );
 
 -- Exams table

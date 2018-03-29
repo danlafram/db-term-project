@@ -34,3 +34,20 @@ VALUES
 ("Kelly", "Wendle", "92 Mitchem Road, Ottawa, Ontario, D8G 2H8", "613-125-52566"),
 ("Ryan", "Scott", "144 Busser Crescent, Ottawa, Ontario, B9O 1Q3", "613-146-2208"),
 ("James", "Bryant", "155 Huff Road, Ottawa, Ontario, D5E 0W7", "613-187-1993");
+
+INSERT INTO animals(name, type, description, dob, date_inscription, animal_state, ownerNum)
+VALUES
+("Molly", "Dog", "Long gold hair labradoodle, fairly large, small hips issues to consider soon.", "2009-04-20", "2017-09-01", vivant, 1),
+("Polly", "Bird", "Amazonian Parrot, colourful, large wignspan.", "2005-10-31", "2017-10-04", vivant, 2),
+("Diego", "Snake", "Floridian python, recently operated on for intestinal issues.", "2012-09-15", "2017-02-09", decede, 2),
+("Zeek", "Dog", "Black hair great-dane, very good health.", "2015-11-22", "2017-09-03", vivant, 3),
+("Griffon", "Cat", "Egyptian hairless cat, very skiddish, approach with caution.", "2008-08-90", "2017-08-07", vivant, 4),
+("Cleo", "Cat", "Savannah Cat, recently domesticated, very dangerous.", "2016-02-28", "2017-10-11", vivant, 5),
+("Dory", "Fish", "Large blue fish, diagnosed with memory issues.", "2011-05-22", "2017-03-21", decede, 5),
+("Sir Charles", "Dog", "Small pomeranian, very loud and tends to bite a lot.", "2007-05-29", "2017-01-07", vivant, 5),
+("Xavier", "Ferret", "Very old common pherret.", "2006-12-20", "2017-01-28", vivant, 6),
+("Slimmy Jimmy", "Lizard", "Arizona rock lizard, very small for its kind.", "2012-09-19", "2017-10-01", vivant, 7),
+("Jeffery", "Bird", "Alaskan Budgie, smaller bird, clipped wings", "2010-04-20", "2017-02-06", vivant, 1);
+
+INSERT INTO exams(exam_date, description, examiner, animalNo)
+VALUES
