@@ -51,3 +51,23 @@ VALUES
 
 INSERT INTO exams(exam_date, description, examiner, animalNo)
 VALUES
+("2018-03-10", "Molly is very healthy considering her age. Continue feeding her the new food.", 2, 1),
+("2018-01-05", "Polly's wings are great. Let her fly around for 1-2 hours a day.", 3, 2),
+("2018-02-28", "Diego should continue eating 1-2 times a week.", 3, 3),
+("2018-02-09", "Zeek is a big dog so make sure you give him exercise once a day", 6, 4),
+("2018-01-17", "Ensure Griffon has enough water, he seems dehydrated.", 7, 5),
+("2018-01-04", "Cleo is slightly overweight. We might need to consider a diet soon.", 10, 6),
+("2018-01-30", "Dory's tank needs to be cleaned every week.", 10, 7),
+("2018-02-10", "Charles is doing great. Keep walking him twice a day.", 11, 8),
+("2018-03-10", "Xavier is getting old but seems to be doing well. We might do a shot next time.", 14, 9),
+("2018-03-10", "Jimmy is still very small for his kind and age. Maybe increase the food.", 15, 10),
+("2018-03-10", "Since his wings are clipped, you'll have to make sure he gets exercise somehow.", 15, 11);
+
+
+
+
+
+
+
+
+
