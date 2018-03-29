@@ -4,10 +4,10 @@ CREATE DATABASE VetoSansFrontieres;
 -- Clinics table
 CREATE TABLE cliniques (
     cliniqueNum 		INT SERIAL PRIMARY KEY,
-    address 			VARCHAR(80), -- Pull this out INTo its own table
-    telephone 			VARCHAR(16),
-    telecopier 			VARCHAR(16),
-    gestionnaireID 		VARCHAR(8) REFERENCES employees(employeeId), -- Subject to change
+    address 			VARCHAR(80) 	NOT NULL, -- Pull this out into its own table
+    telephone 			VARCHAR(16) 	NOT NULL,
+    telecopier 			VARCHAR(16) 	NOT NULL,
+    gestionnaireID 		INT REFERENCES 	employees(employeeId), -- Subject to change
 );
 
 -- Create gender domain for employees
@@ -22,9 +22,10 @@ CREATE TABLE employees(
 	telephone 			VARCHAR(16)		NOT NULL,
 	dob 				DATE 			NOT NULL, -- Check documentation
 	sexe 				gender,
-	nas 				VARCHAR(11)		NOT NULL,
+	nas 				VARCHAR(11)		NOT NULL UNIQUE,
 	fonction 			VARCHAR(80) 	NOT NULL,
-	salary 				REAL,
+	salary 				MONEY,
+	cliniqueNum			INT REFERENCES cliniques(cliniqueNum),
 );
 
 -- Owners table
@@ -54,7 +55,7 @@ CREATE TABLE animals(
 -- Exams table
 CREATE TABLE exams(
 	examNo 				INT SERIAL PRIMARY KEY,
-	exam_DATE 			DATE 	NOT NULL, -- Check documentation
+	exam_date 			DATE 	NOT NULL, -- Check documentation
 	description 		TEXT 	NOT NULL,
 	examiner 			INT REFERENCES employees(employeeId),
 	animalNo 			INT REFERENCES animals(animalNum),
@@ -63,12 +64,12 @@ CREATE TABLE exams(
 -- Results table
 CREATE TABLE results(
 	resulsId 			INT SERIAL PRIMARY KEY,
-	examNo 				REFERENCES exams(examNo),
-	animalNo 			REFERENCES animals(animalNo),
-	treatmentNo 		REFERENCES treatments(treatmentNo),
 	treatment_quantity 	INT 	NOT NULL,
 	start_DATE 			DATE 	NOT NULL,
-	end_DATE 			DATE 	NOT NULL,
+	end_date 			DATE 	NOT NULL,
+	examNo 				INT REFERENCES exams(examNo),
+	animalNo 			INT REFERENCES animals(animalNo),
+	treatmentNo 		INT REFERENCES treatments(treatmentNo),
 );
 
 -- Treatments table is static and will only be read from. NO INSERTIONS.
