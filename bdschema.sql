@@ -1,14 +1,13 @@
 -- Create Database
-
+CREATE DATABASE VetoSansFrontieres;
 
 -- Clinics table
 CREATE TABLE cliniques (
-    cliniqueNum int NOT NULL,
-    address varchar(80), -- Pull this out into its own table
-    telephone varchar(16),
-    telecopier varchar(16),
-    gestionnaireID varchar(8) REFERENCES employees(employeeID), -- Subject to change
-    PRIMARY KEY(cliniqueNum)
+    cliniqueNum 		INT SERIAL PRIMARY KEY,
+    address 			VARCHAR(80), -- Pull this out INTo its own table
+    telephone 			VARCHAR(16),
+    telecopier 			VARCHAR(16),
+    gestionnaireID 		VARCHAR(8) REFERENCES employees(employeeId), -- Subject to change
 );
 
 -- Create gender domain for employees
@@ -16,47 +15,67 @@ CREATE DOMAIN gender CHAR(1) CHECK (value IN ('F', 'M'));
 
 -- Employees table
 CREATE TABLE employees(
-	employeeID int NOT NULL,
-	fname varchar(255),
-	lname varchar(255),
-	address varchar(80), -- Subject to change
-	telephone varchar(16),
-	dob date, -- Check documentation
-	sexe gender,
-	nas varchar(11),
-	fonction varchar (80),
-	salary int,
-	PRIMARY KEY (employeeID)
+	employeeId 			INT SERIAL PRIMARY KEY,
+	fname 				VARCHAR(255) 	NOT NULL,
+	lname 				VARCHAR(255) 	NOT NULL,
+	address 			VARCHAR(80) 	NOT NULL, -- Subject to change
+	telephone 			VARCHAR(16)		NOT NULL,
+	dob 				DATE 			NOT NULL, -- Check documentation
+	sexe 				gender,
+	nas 				VARCHAR(11)		NOT NULL,
+	fonction 			VARCHAR(80) 	NOT NULL,
+	salary 				REAL,
 );
 
 -- Owners table
 CREATE TABLE owners(
-	ownerNum int NOT NULL,
-	fName varchar(255),
-	lName varchar(255),
-	address varchar(80),
-	telephone varchar(16),
-	PRIMARY KEY (ownerNum)
+	ownerNum 			INT SERIAL PRIMARY KEY,
+	fName 				VARCHAR(255) 	NOT NULL,
+	lName 				VARCHAR(255) 	NOT NULL,
+	address 			VARCHAR(80) 	NOT NULL,
+	telephone 			VARCHAR(16) 	NOT NULL,
 );
 
 -- Create state domain for animals
-CREATE DOMAIN state varchar(10) CHECK (value IN ('vivant', 'decede'));
+CREATE DOMAIN state VARCHAR(10) CHECK (value IN ('vivant', 'decede')); -- Make sure this is a fixed value dropdown
 
 -- Animals table
 CREATE TABLE animals(
-	animalNum int NOT NULL,
-	name varchar(255),
-	type varchar(255),
-	description TEXT, -- TEXT might be big, can be chagned
-	dob date, -- Check documentation
-	dateInscription date,
-	animaleEtat state,
-	owner int REFERENCES owners(ownerNum)
+	animalNum 			INT SERIAL PRIMARY KEY,
+	name 				VARCHAR(255) 	NOT NULL,
+	type 				VARCHAR(255) 	NOT NULL,
+	description 		TEXT 			NOT NULL, -- TEXT might be big, can be chagned
+	dob 				DATE 			NOT NULL, -- Check documentation
+	DATEInscription 	DATE 			NOT NULL,
+	animaleEtat 		state 			NOT NULL,
+	owner 				INT REFERENCES owners(ownerNum)
 );
 
 -- Exams table
 CREATE TABLE exams(
+	examNo 				INT SERIAL PRIMARY KEY,
+	exam_DATE 			DATE 	NOT NULL, -- Check documentation
+	description 		TEXT 	NOT NULL,
+	examiner 			INT REFERENCES employees(employeeId),
+	animalNo 			INT REFERENCES animals(animalNum),
+);
 
+-- Results table
+CREATE TABLE results(
+	resulsId 			INT SERIAL PRIMARY KEY,
+	examNo 				REFERENCES exams(examNo),
+	animalNo 			REFERENCES animals(animalNo),
+	treatmentNo 		REFERENCES treatments(treatmentNo),
+	treatment_quantity 	INT 	NOT NULL,
+	start_DATE 			DATE 	NOT NULL,
+	end_DATE 			DATE 	NOT NULL,
+);
+
+-- Treatments table is static and will only be read from. NO INSERTIONS.
+CREATE TABLE treatments(
+	treatmentNo 		VARCHAR(5) PRIMARY KEY,
+	name 				VARCHAR(255) 	NOT NULL,
+	price 				INT 			NOT NULL,
 );
 
 
