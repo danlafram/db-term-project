@@ -4,10 +4,11 @@ CREATE DATABASE VetoSansFrontieres;
 -- Clinics table
 CREATE TABLE cliniques (
     cliniqueNum 		INT SERIAL PRIMARY KEY,
+    name 				VARCHAR(80)		NOT NULL,
     address 			VARCHAR(80) 	NOT NULL, -- Pull this out into its own table
     telephone 			VARCHAR(16) 	NOT NULL,
     telecopier 			VARCHAR(16) 	NOT NULL,
-    gestionnaireID 		INT REFERENCES 	employees(employeeId), -- Subject to change
+    gestionnaireId 		INT REFERENCES 	employees(employeeId), -- Subject to change
 );
 
 -- Create gender domain for employees
@@ -48,7 +49,7 @@ CREATE TABLE animals(
 	description 		TEXT 			NOT NULL, -- TEXT might be big, can be chagned
 	dob 				DATE 			NOT NULL, -- Check documentation
 	date_inscription 	DATE 			NOT NULL,
-	animale_sate		state 			NOT NULL,
+	animal_sate			state 			NOT NULL,
 	ownerNum 			INT REFERENCES owners(ownerNum)
 );
 
@@ -67,6 +68,7 @@ CREATE TABLE results(
 	treatment_quantity 	INT 	NOT NULL,
 	start_date			DATE 	NOT NULL,
 	end_date 			DATE 	NOT NULL,
+	treatment_price		MONEY,
 	examNo 				INT REFERENCES exams(examNo),
 	animalNo 			INT REFERENCES animals(animalNo),
 	treatmentNo 		VARCHAR(5) REFERENCES treatments(treatmentNo),
@@ -74,7 +76,7 @@ CREATE TABLE results(
 
 -- Treatments table is static and will only be read from. NO INSERTIONS.
 CREATE TABLE treatments(
-	treatmentNo 		VARCHAR(5) PRIMARY KEY,
+	treatmentNo 		VARCHA5R(5) PRIMARY KEY,
 	name 				VARCHAR(255) 	NOT NULL,
 	price 				MONEY 			NOT NULL,
 );

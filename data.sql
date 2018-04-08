@@ -1,5 +1,5 @@
 -- Clinic data
-INSERT INTO cliniques (address, telephone, telecopier, gestionnaireID)
+INSERT INTO clinics (address, telephone, telecopier, gestionnaireID)
 VALUES 
 ("123 Laurier Street, Ottawa, Ontatio, L3T 5G9", "613-288-9988", "888-223-1423", 4),
 ("654 King Edward Street, Ottawa, Ontatio, T5T 9I8", "613-993-4388", "888-259-1445", 8),
